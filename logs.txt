@@ -1,0 +1,42 @@
+ * Serving Flask app 'app' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+06/01/2025, 13:00:37, WARNING,  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+06/01/2025, 13:00:37, INFO,  * Running on http://172.25.103.4:3111/ (Press CTRL+C to quit)
+06/01/2025, 13:02:34, INFO, 172.25.103.4 - - [01/Jun/2025 13:02:34] "GET / HTTP/1.1" 200 -
+06/01/2025, 13:02:35, INFO, 172.25.103.4 - - [01/Jun/2025 13:02:35] "GET /static/css/main.css HTTP/1.1" 200 -
+06/01/2025, 13:02:35, INFO, 172.25.103.4 - - [01/Jun/2025 13:02:35] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+06/01/2025, 13:05:29, INFO, Article "2020 CNCF Annual Report" retrieved!
+06/01/2025, 13:05:29, INFO, 172.25.103.4 - - [01/Jun/2025 13:05:29] "GET /1 HTTP/1.1" 200 -
+06/01/2025, 13:05:29, INFO, 172.25.103.4 - - [01/Jun/2025 13:05:29] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+06/01/2025, 13:05:36, INFO, Article "KubeCon + CloudNativeCon 2021" retrieved!
+06/01/2025, 13:05:36, INFO, 172.25.103.4 - - [01/Jun/2025 13:05:36] "GET /2 HTTP/1.1" 200 -
+06/01/2025, 13:05:36, INFO, 172.25.103.4 - - [01/Jun/2025 13:05:36] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+06/01/2025, 13:06:44, INFO, 172.25.103.4 - - [01/Jun/2025 13:06:44] "GET /create HTTP/1.1" 200 -
+06/01/2025, 13:06:44, INFO, 172.25.103.4 - - [01/Jun/2025 13:06:44] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+06/01/2025, 13:07:43, INFO, Article "ArgoCd & GitOps" created!
+06/01/2025, 13:07:43, INFO, 172.25.103.4 - - [01/Jun/2025 13:07:43] "[32mPOST /create HTTP/1.1[0m" 302 -
+06/01/2025, 13:07:43, INFO, 172.25.103.4 - - [01/Jun/2025 13:07:43] "GET / HTTP/1.1" 200 -
+06/01/2025, 13:07:44, INFO, 172.25.103.4 - - [01/Jun/2025 13:07:44] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+06/01/2025, 13:07:50, INFO, Article "ArgoCd & GitOps" retrieved!
+06/01/2025, 13:07:50, INFO, 172.25.103.4 - - [01/Jun/2025 13:07:50] "GET /7 HTTP/1.1" 200 -
+06/01/2025, 13:07:50, INFO, 172.25.103.4 - - [01/Jun/2025 13:07:50] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+06/01/2025, 13:08:46, INFO, Article "KubeCon + CloudNativeCon 2021" retrieved!
+06/01/2025, 13:08:46, INFO, 172.25.103.4 - - [01/Jun/2025 13:08:46] "GET /2 HTTP/1.1" 200 -
+06/01/2025, 13:08:46, INFO, 172.25.103.4 - - [01/Jun/2025 13:08:46] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+06/01/2025, 13:08:49, INFO, Article "ArgoCd & GitOps" retrieved!
+06/01/2025, 13:08:49, INFO, 172.25.103.4 - - [01/Jun/2025 13:08:49] "GET /7 HTTP/1.1" 200 -
+06/01/2025, 13:08:49, INFO, 172.25.103.4 - - [01/Jun/2025 13:08:49] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+06/01/2025, 13:08:53, INFO, Article with id "8" does not exist. 404 page returned!
+06/01/2025, 13:08:53, INFO, 172.25.103.4 - - [01/Jun/2025 13:08:53] "[33mGET /8 HTTP/1.1[0m" 404 -
+06/01/2025, 13:08:53, INFO, 172.25.103.4 - - [01/Jun/2025 13:08:53] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+06/01/2025, 13:08:59, INFO, The "About Us" page was retrieved
+06/01/2025, 13:08:59, INFO, 172.25.103.4 - - [01/Jun/2025 13:08:59] "GET /about HTTP/1.1" 200 -
+06/01/2025, 13:08:59, INFO, 172.25.103.4 - - [01/Jun/2025 13:08:59] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+06/01/2025, 13:09:44, INFO, 172.25.103.4 - - [01/Jun/2025 13:09:44] "GET /healthz HTTP/1.1" 200 -
+06/01/2025, 13:09:49, INFO, 172.25.103.4 - - [01/Jun/2025 13:09:49] "GET /metrics HTTP/1.1" 200 -
+06/01/2025, 13:10:06, INFO, 172.25.103.4 - - [01/Jun/2025 13:10:06] "GET / HTTP/1.1" 200 -
+06/01/2025, 13:10:06, INFO, 172.25.103.4 - - [01/Jun/2025 13:10:06] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
