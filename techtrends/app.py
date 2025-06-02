@@ -5,13 +5,19 @@ from flask import Flask, jsonify, json, render_template, request, url_for, redir
 from werkzeug.exceptions import abort
 
 # Configure logging to STDOUT with DEBUG level and timestamp
-logging.basicConfig(
-    level=logging.DEBUG,
-    format='%(asctime)s, %(levelname)s, %(message)s',
-    datefmt='%m/%d/%Y, %H:%M:%S',
-    handlers=[logging.StreamHandler(sys.stdout)]
-)
+stdout_handler = logging.StreamHandler(sys.stdout)
+stdout_handler.setLevel(logging.DEBUG)
+stdout_handler.setFormatter(logging.Formatter('%(asctime)s, %(levelname)s, %(message)s', datefmt='%m/%d/%Y, %H:%M:%S'))
+
+stderr_handler = logging.StreamHandler(sys.stderr)
+stderr_handler.setLevel(logging.ERROR)
+stderr_handler.setFormatter(logging.Formatter('%(asctime)s, %(levelname)s, %(message)s', datefmt='%m/%d/%Y, %H:%M:%S'))
+
 logger = logging.getLogger("app")
+logger.setLevel(logging.DEBUG)
+logger.handlers = []  # Remove default handlers
+logger.addHandler(stdout_handler)
+logger.addHandler(stderr_handler)
 
 # Global variable to count DB connections
 db_connection_count = 0
@@ -23,6 +29,7 @@ def get_db_connection():
     db_connection_count += 1
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
+    logger.debug('Database connection established.')
     return connection
 
 # Function to get a post using its ID
@@ -31,6 +38,7 @@ def get_post(post_id):
     post = connection.execute('SELECT * FROM posts WHERE id = ?',
                         (post_id,)).fetchone()
     connection.close()
+    logger.debug(f'Fetched post with id {post_id}.')
     return post
 
 # Define the Flask application
@@ -43,6 +51,7 @@ def index():
     connection = get_db_connection()
     posts = connection.execute('SELECT * FROM posts').fetchall()
     connection.close()
+    logger.debug('Index page accessed.')
     return render_template('index.html', posts=posts)
 
 # Define how each individual article is rendered 
@@ -51,7 +60,7 @@ def index():
 def post(post_id):
     post = get_post(post_id)
     if post is None:
-        logger.info('Article with id "%s" does not exist. 404 page returned!', post_id)
+        logger.error('Article with id "%s" does not exist. 404 page returned!', post_id)
         return render_template('404.html'), 404
     else:
         logger.info('Article "%s" retrieved!', post["title"])
@@ -88,6 +97,7 @@ def metrics():
     connection = get_db_connection()
     post_count = connection.execute('SELECT COUNT(*) FROM posts').fetchone()[0]
     connection.close()
+    logger.debug('Metrics endpoint accessed.')
     response = app.response_class(
         response=json.dumps({
             "db_connection_count": db_connection_count,
@@ -100,6 +110,7 @@ def metrics():
 
 @app.route('/healthz')
 def healthcheck():
+    logger.debug('Healthcheck endpoint accessed.')
     response = app.response_class(
             response=json.dumps({"result":"OK - healthy"}),
             status=200,
